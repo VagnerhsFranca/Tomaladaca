@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+	  <ul class="nav justify-content-center">
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/index">Home</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/produto">Produto</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/lote">Lote</a>
+		  </li>
+		</ul>
+	</nav>
+	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Formulario de produto</h2> </div>
+	<form th:action="/produto/form" th:method="${produtoEditar} ? 'put' : 'post'" style="margin: 50px;">
+		<div th:if="${produtoEditar}">
+			<input name="codigoProduto" type="hidden" th:value="${produtoEditar.codigoProduto}">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Nome</label>
+			<input name="nomeProduto" th:value="${produtoEditar} ? ${produtoEditar.nomeProduto} : ''" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome do Produto">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlTextarea1">Descricao</label>
+		    <textarea name="descricaoProduto" th:value="${produtoEditar} ? ${produtoEditar.descricaoProduto} : ''" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+		</div>
+		<div>
+			<input type="submit" th:class="${produtoEditar} ? 'btn btn-warning' : 'btn btn-success'" th:text="${produtoEditar} ? 'Editar' : 'Cadastrar'" style="width: 100%;">
+		</div>
+	</form>
+	
+</body>

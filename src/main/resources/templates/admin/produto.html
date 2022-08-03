@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+	  <ul class="nav justify-content-center">
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/index">Home</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/produto">Produto</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/admin/lote">Lote</a>
+		  </li>
+		</ul>
+	</nav>
+	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Produtos</h2> </div>
+	<table th:if="${produtos}" class="table table-striped table-dark">
+		<thead>
+	      	<tr>
+		        <th scope="col">#</th>
+		        <th scope="col">Nome</th>
+		        <th scope="col">Descricao</th>
+		        <th scope="col"> 
+		        	<a href="/produto/create"><button type="button" class="btn btn-success">Cadastrar</button></a>
+		        </th>
+	      	</tr>
+	    </thead>
+		<tbody>
+	      	<tr th:each="produto : ${produtos}" >
+		        <td th:text="${produto.codigoProduto}"></td>
+		        <td th:text="${produto.nomeProduto}"></td>
+		        <td th:text="${produto.descricaoProduto}"></td>
+		        <td>
+	           		<a th:href="@{/produto/update/{codigoProduto}(codigoProduto=${produto.codigoProduto})}"><button type="button" class="btn btn-warning">Editar</button></a>
+	           		<a th:href="@{/produto/delete/{codigoProduto}(codigoProduto=${produto.codigoProduto})}"><button type="button" class="btn btn-danger">Deletar</button></a>
+		    	</td>
+		    </tr>
+    	</tbody>
+
+	</table>
+</body>
