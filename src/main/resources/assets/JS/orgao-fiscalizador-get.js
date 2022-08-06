@@ -43,7 +43,6 @@ function editarFiscalizador(idOrgaoFiscalizador){
     dataEdit = fazGet("http://localhost:8080/admin/orgao-fiscalizador-form/"+ idOrgaoFiscalizador);
     sessionStorage.setItem("fiscalizadorEdit", dataEdit);
     console.log(sessionStorage.getItem("fiscalizadorEdit"));
-    debugger;
     window.location.href="./orgao-fiscalizador-form.html";
 }
 

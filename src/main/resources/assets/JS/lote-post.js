@@ -61,7 +61,6 @@ function cadastrarLote() {
         "produtos": arrayDeProdutos
     }
 	console.log(body);
-	debugger;
     fazPost(url, body)
-    window.location.href="./index.html";
+    window.location.href="./lote.html";
 }

@@ -41,13 +41,32 @@ public class LoteController {
 	
 	@CrossOrigin("*")
 	@GetMapping ("lote")
-	public  ResponseEntity<List<Lote>> produtos(){
+	public  ResponseEntity<List<Lote>> lotes(){
 		return ResponseEntity.ok(loteService.findAll());
 	}
 	
 	@CrossOrigin("*")
+	@GetMapping ("lote/{idLote}")
+	public  ResponseEntity<Lote> lote(Model model, @PathVariable Integer idLote ){
+		return ResponseEntity.ok(loteService.findById(idLote).get());
+	}
+	
+	@CrossOrigin("*")
+	@GetMapping ("lote/donatario/{idDonatario}")
+	public  ResponseEntity<List<Lote>> lotesDonatario(Model model, @PathVariable Integer idDonatario ){
+		List <Lote> loteDonatario = new ArrayList<>();
+		for(Lote l : loteService.findAll()) {
+			if(l.getOrgaoDonatario().getIdOrgaoDonatario() == idDonatario) {
+				loteDonatario.add(l);
+			}
+		}
+		
+		return ResponseEntity.ok(loteDonatario);
+	}
+	
+	@CrossOrigin("*")
 	@GetMapping ("lote/delete/{idLote}")
-	public ResponseEntity<?> deleteProduto(Model model, @PathVariable Integer idLote ) {
+	public ResponseEntity<?> deleteLote(Model model, @PathVariable Integer idLote ) {
 		Lote lote = loteService.findById(idLote).get();
 		
 		if(lote != null) {
@@ -59,7 +78,7 @@ public class LoteController {
 	
 	@CrossOrigin("*")
 	@PostMapping("lote-form")
-	public ResponseEntity<?> saveProduto(Model model, @RequestBody LoteDto loteDto) {
+	public ResponseEntity<?> saveLote(Model model, @RequestBody LoteDto loteDto) {
 		Lote lote = new Lote();
 		if(loteDto.getIdLote() != null) {
 			lote.setIdLote(loteDto.getIdLote());
@@ -70,9 +89,13 @@ public class LoteController {
 		List <Produto> produtosLote = new ArrayList<>();
 		for(Produto p : loteDto.getProdutos()) {
 			Produto p2 = produtoService.findById(p.getCodigoProduto()).get();
-			p.setDescricaoProduto(p2.getDescricaoProduto());
-			p.setNomeProduto(p2.getNomeProduto());
-			produtosLote.add(p);
+			if(p.getQuantidade() > 0) {
+				
+				p.setDescricaoProduto(p2.getDescricaoProduto());
+				p.setNomeProduto(p2.getNomeProduto());
+				produtosLote.add(p);
+			}
+			
 		}
 		lote.setProdutos(produtosLote);
 		lote.setDataEntrega(loteDto.getDataEntrega());
@@ -80,7 +103,10 @@ public class LoteController {
 		lote.setDataEntrega(loteDto.getDataEntrega());
 		lote.setDataCadastro(LocalDateTime.now());
 		
-		loteService.save(lote);
+		if(lote.getProdutos().size() > 0) {
+			loteService.save(lote);
+		}
+		
 		
 		for(Produto p : lote.getProdutos()) {
 			atualizaQuantidadeProduto(p, p.getQuantidade());

@@ -39,7 +39,6 @@ function cadastrarProduto() {
     	}
 	}
 	console.log(body)
-	debugger;
     fazPost(url, body)
     window.location.href="./produto.html";
 }

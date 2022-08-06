@@ -32,6 +32,12 @@ public class OrgaoDonatarioController {
 	public  ResponseEntity<List<OrgaoDonatario>> orgaosDonatarios(){
 		return ResponseEntity.ok(orgaoDonatarioService.findAll());
 	}
+
+	@CrossOrigin("*")
+	@GetMapping ("orgao-donatario/{idOrgaoDonatario}")
+	public  ResponseEntity<OrgaoDonatario> orgaoDonatario(Model model, @PathVariable Integer idOrgaoDonatario){
+		return ResponseEntity.ok(orgaoDonatarioService.findById(idOrgaoDonatario).get());
+	}
 	
 	@CrossOrigin("*")
 	@GetMapping ("orgao-donatario/delete/{idOrgaoDonatario}")
