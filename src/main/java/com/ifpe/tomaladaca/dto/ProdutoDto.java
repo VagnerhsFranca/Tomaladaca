@@ -1,29 +1,10 @@
-package com.ifpe.tomaladaca.model;
+package com.ifpe.tomaladaca.dto;
 
-import java.io.Serializable;
+public class ProdutoDto {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Produto implements Serializable{
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1704068985149952845L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer codigoProduto;
-	@Column(length = 255)
 	private String nomeProduto;
-	@Column(length = 255)
 	private String descricaoProduto;
-	@Column
 	private Integer quantidade;
 	
 	public Integer getCodigoProduto() {
@@ -49,8 +30,5 @@ public class Produto implements Serializable{
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }

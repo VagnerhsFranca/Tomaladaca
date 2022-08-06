@@ -29,21 +29,22 @@
 			</li>
 		  </ul>
 	  </nav>
-	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Formulario Orgao Fiscalizador</h2> </div>
-	<form onsubmit="cadastrarFiscalizador()" style="margin: 50px;" id="orgao-fiscalizador-form">
-		<div class="form-group">
-			<label for="nomeOrgaoFiscalizador">Nome</label>
-			<input type="text" class="form-control" id="nomeOrgaoFiscalizador" placeholder="Nome do Orgao Fiscalizador">
-		</div>
-		<div class="form-group">
-			<label for="descricaoOrgaoFiscalizador">Descricao</label>
-		    <textarea class="form-control" id="descricaoOrgaoFiscalizador" rows="3"></textarea>
-		</div>
-		<div>
-			<input type="submit" class="btn btn-success" style="width: 100%;">
-		</div>
-	</form>
-	<script src="../../assets/JS/orgao-fiscalizador-form-get.js"></script>
-	<script src="../../assets/JS/orgao-fiscalizador-post.js"></script>
+	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Lotes</h2> </div>
+	<table id="tabelaLotes" class="table table-striped table-dark">
+		<thead>
+	      	<tr>
+		        <th scope="col">#</th>
+		        <th scope="col">Orgao Fiscalizador</th>
+		        <th scope="col">Orgao Donatario</th>
+		        <th scope="col">Produtos</th>
+		        <th scope="col">Data de Entrega</th>
+		        <th scope="col">Data de Cadastro</th>
+		        <th scope="col"> 
+		        	<a href="lote-form.html"><button type="button" class="btn btn-success">Cadastrar</button></a>
+		        </th>
+	      	</tr>
+	    </thead>
+	</table>
+	<script src="../../assets/JS/lote-get.js"></script>
 </body>
 </html>

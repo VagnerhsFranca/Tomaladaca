@@ -11,51 +11,53 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-	  <ul class="nav justify-content-center">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/index">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/produto">Produto</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/lote">Lote</a>
-		  </li>
-		</ul>
-	</nav>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/produto.html">Produto</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-fiscalizador.html">Orgao Fiscalizador</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-donatario.html">Orgao Donatario</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/lote.html">Lote</a>
+			</li>
+		  </ul>
+	  </nav>
 	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Formulario Orgao Donatario</h2> </div>
-	<form th:action="/orgao-donatario/form" th:method="${orgaoDonatarioEdit} ? 'put' : 'post'" style="margin: 50px;">
-		<div th:if="${orgaoDonatarioEdit}">
-			<input type="hidden" th:value="${orgaoDonatarioEdit.idOrgaoDonatario}">
-		</div>
+	<form onsubmit="cadastrarDonatario()" id="orgao-donatario-form" style="margin: 50px;" >
 		<div class="form-row">
 			<div class="form-group col-md-6">
-		    	<label for="inputNome">Nome</label>
-		    	<input type="text" th:value="${orgaoDonatarioEdit} ? ${orgaoDonatarioEdit.nomeOrgaoDonatario} : ''" class="form-control" id="inputNome" placeholder="Nome do Orgao Donatario">
+		    	<label for="nomeOrgaoDonatario">Nome</label>
+		    	<input id="nomeOrgaoDonatario" type="text"  class="form-control" id="inputNome" placeholder="Nome do Orgao Donatario">
 		   	</div>
 		   	<div class="form-group col-md-6">
-		      	<label for="inputTelefone">Telefone</label>
-		      	<input type="number" th:value="${orgaoDonatarioEdit} ? ${orgaoDonatarioEdit.telefoneOrgaoDonatario} : ''" class="form-control" id="inputTelefone" placeholder="81 9 99999999">
+		      	<label for="telefoneOrgaoDonatario">Telefone</label>
+		      	<input id="telefoneOrgaoDonatario" type="number" class="form-control" id="inputTelefone" placeholder="81 9 99999999">
 		    </div>
 		</div>
 		<div class="form-group">
-	    	<label for="inputAddress">Endereco</label>
-			<input type="text" class="form-control" id="inputAddress" placeholder="Rua, numero, CEP, Cidade, Estado, Pais.">
+	    	<label for="enderecoOrgaoDonatario">Endereco</label>
+			<input id="enderecoOrgaoDonatario" type="text" class="form-control" placeholder="Rua, numero, CEP, Cidade, Estado, Pais.">
 		</div>
 		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Horarios de funcionamento</label>
-		    <textarea th:value="${orgaoDonatarioEdit} ? ${orgaoDonatarioEdit.horarioFuncionemento} : ''" name="horarioFuncionemento" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Segunda - Sexta : 08h - 17h &#10;Sabado, Domingo e Feriados : 09h - 15h"></textarea>
+			<label for="horarioFuncionemento">Horarios de funcionamento</label>
+		    <textarea id="horarioFuncionemento" class="form-control" rows="3" placeholder="Segunda - Sexta : 08h - 17h &#10;Sabado, Domingo e Feriados : 09h - 15h"></textarea>
 		</div>
 		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Descricao</label>
-		    <textarea name="descricaoOrgaoDonatario" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			<label for="descricaoOrgaoDonatario">Descricao</label>
+		    <textarea id="descricaoOrgaoDonatario" class="form-control" rows="3"></textarea>
 		</div>
 		<div>
-			<input type="submit" th:class="${orgaoDonatarioEdit} ? 'btn btn-warning' : 'btn btn-success'" th:text="${orgaoDonatarioEdit} ? 'Editar' : 'Cadastrar'" style="width: 100%;">
-		</div>
+			<input type="submit" class="btn btn-success" style="width: 100%;">
+		</div>	
+	</form>
+	<script src="../../assets/JS/orgao-donatario-form-get.js"></script>
+	<script src="../../assets/JS/orgao-donatario-post.js"></script>
+</body>
+</html>

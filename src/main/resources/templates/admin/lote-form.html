@@ -11,61 +11,61 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-	  <ul class="nav justify-content-center">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/index">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/produto">Produto</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/lote">Lote</a>
-		  </li>
-		</ul>
-	</nav>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/produto.html">Produto</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-fiscalizador.html">Orgao Fiscalizador</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-donatario.html">Orgao Donatario</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/lote.html">Lote</a>
+			</li>
+		  </ul>
+	  </nav>
 	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Formulario de Lote</h2> </div>
-	<form action="/lote/form" method="post" style="margin: 50px;">
-		<div class="form-group" th:if="${orgaosFiscalizadores}">
-		    <label for="exampleFormControlSelect1">Orgao Fiscalizador</label>
-		    <select name="idOrgaoFiscalizador" class="form-control" id="exampleFormControlSelect1" >
-		      <option th:each="orgaoFiscalizador : ${orgaosFiscalizadores}" th:text="${orgaoFiscalizalidor.nomeOrgaoFiscalizador}" th:value="${orgaoFiscalizalidor.idOrgaoFiscalizador}"></option> 
-		    </select>
-	  	</div>
-	  	<div class="form-group" th:if="${orgaosDonatarios}">
-		    <label for="exampleFormControlSelect1">Orgao Donatario</label>
-		    <select name="idOrgaoDonatario" class="form-control" id="exampleFormControlSelect1" >
-		      <option th:each="orgaoDonatario : ${orgaosDonatarios}" th:text="${orgaoDonatario.nomeOrgaoDonatario}" th:value="${orgaoDonatario.idOrgaoDonatario}"></option> 
-		    </select>
-	  	</div>
-	  	<div class="form-group" th:if="${produtos}">
-	  		<label>Produtos</label>
-	  		<table>
-	  			<th th:each="produto : ${produtos}">
-	  				<td th:value="${produto.nomeProduto}"></td>
-	  				<td th:value="${produto.descricaoProduto}"></td>
-	  				<td>
-	  					<a th:href="@{/lote/addProduto/{codigoProduto}(codigoProduto = ${produto.codigoProduto})}"><button type="button" class="btn btn-success">+</button></a> |
-                    	<a th:href="@{/pedido/removeProduto/{codigoProduto}(codigoProduto = ${produto.codigoProduto})}"><button type="button" class="btn btn-danger">-</button></a>
-	  				</td>
-	  				<span th:each="p : ${lote.produtos}">
-	  					<td th:if="${p.key == produto.nomeProduto} ? th:value='${p.value}' : ''">
-	  				</span>
-	  			</th>
-	  		</table>
+	<form id="lote-form" onSubmit="cadastrarLote()" style="margin: 50px;">
+		<div class="form-group">
+		    <label>Orgao Fiscalizador</label>
+		    <select id="idOrgaoFiscalizador" class="form-control" required></select>
 	  	</div>
 	  	<div class="form-group">
-			<label for="exampleFormControlTextarea1">Descricao</label>
-		    <textarea name="descricaoLote" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+		    <label>Orgao Donatario</label>
+		    <select class="form-control" id="idOrgaoDonatario" required></select>
+	  	</div>
+	  	<div class="form-group">
+		   	<label>Data de Entrega </label><br>
+		   	<input id="dataEntrega" type="date" required>
+		</div>
+	  	<div class="form-group">
+			<label for="descricaoLote">Descricao</label>
+		    <textarea class="form-control" id="descricaoLote" rows="3"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Produtos</label>
+			<table id="tabelaProdutos" class="table table-striped">
+				<thead>
+			      	<tr>
+				        <th scope="col">#</th>
+				        <th scope="col">Nome</th>
+				        <th scope="col">Descricao</th>
+				        <th scope="col">Quantidade</th>
+			      	</tr>
+			    </thead>
+			</table>
+			
 		</div>
 		<div>
-			<input type="submit" th:class="btn btn-success" th:text="Cadastrar" style="width: 100%;">
+			<input type="submit" class="btn btn-success" style="width: 100%;">
 		</div>
 	</form>
-	
+	<script src="../../assets/JS/lote-form-get.js"></script>
+	<script src="../../assets/JS/lote-post.js"></script>
 </body>
+</html>

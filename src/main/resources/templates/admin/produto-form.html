@@ -11,40 +11,45 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-	  <ul class="nav justify-content-center">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/index">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/produto">Produto</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/lote">Lote</a>
-		  </li>
-		</ul>
-	</nav>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/produto.html">Produto</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-fiscalizador.html">Orgao Fiscalizador</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-donatario.html">Orgao Donatario</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/lote.html">Lote</a>
+			</li>
+		  </ul>
+	  </nav>
 	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Formulario de produto</h2> </div>
-	<form th:action="/produto/form" th:method="${produtoEditar} ? 'put' : 'post'" style="margin: 50px;">
-		<div th:if="${produtoEditar}">
-			<input name="codigoProduto" type="hidden" th:value="${produtoEditar.codigoProduto}">
+	<form onSubmit="cadastrarProduto()" id="produto-form" style="margin: 50px;">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+		    	<label for="nomeProduto">Nome</label>
+		    	<input id="nomeProduto" type="text"  class="form-control" id="inputNome" placeholder="Nome do Produto">
+		   	</div>
+		   	<div class="form-group col-md-6">
+		      	<label for="quantidade">Quantidade</label>
+		      	<input id="quantidade" type="number" class="form-control" placeholder="quantidade">
+		    </div>
 		</div>
 		<div class="form-group">
-			<label for="exampleFormControlInput1">Nome</label>
-			<input name="nomeProduto" th:value="${produtoEditar} ? ${produtoEditar.nomeProduto} : ''" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome do Produto">
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Descricao</label>
-		    <textarea name="descricaoProduto" th:value="${produtoEditar} ? ${produtoEditar.descricaoProduto} : ''" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			<label for="descricaoProduto">Descricao</label>
+		    <textarea id="descricaoProduto" class="form-control" rows="3"></textarea>
 		</div>
 		<div>
-			<input type="submit" th:class="${produtoEditar} ? 'btn btn-warning' : 'btn btn-success'" th:text="${produtoEditar} ? 'Editar' : 'Cadastrar'" style="width: 100%;">
+			<input type="submit" class="btn btn-success" style="width: 100%;">
 		</div>
 	</form>
-	
+	<script src="../../assets/JS/produto-form-get.js"></script>
+	<script src="../../assets/JS/produto-post.js"></script>
 </body>
+</html>

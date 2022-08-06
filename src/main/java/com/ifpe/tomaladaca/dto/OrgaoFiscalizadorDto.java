@@ -1,23 +1,9 @@
-package com.ifpe.tomaladaca.model;
+package com.ifpe.tomaladaca.dto;
 
-import java.io.Serializable;
+public class OrgaoFiscalizadorDto {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class OrgaoFiscalizador implements Serializable{
-
-	private static final long serialVersionUID = 3714177921414007209L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idOrgaoFiscalizador;
-	@Column(length = 255)
 	private String nomeOrgaoFiscalizador;
-	@Column(length = 255)
 	private String descricaoOrgaoFiscalizador;
 	
 	public Integer getIdOrgaoFiscalizador() {
@@ -38,7 +24,5 @@ public class OrgaoFiscalizador implements Serializable{
 	public void setDescricaoOrgaoFiscalizador(String descricaoOrgaoFiscalizador) {
 		this.descricaoOrgaoFiscalizador = descricaoOrgaoFiscalizador;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 }

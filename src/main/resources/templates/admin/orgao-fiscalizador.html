@@ -11,47 +11,37 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-	  <ul class="nav justify-content-center">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/index">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/produto">Produto</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/lote">Lote</a>
-		  </li>
-		</ul>
-	</nav>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/produto.html">Produto</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-fiscalizador.html">Orgao Fiscalizador</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-donatario.html">Orgao Donatario</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/lote.html">Lote</a>
+			</li>
+		  </ul>
+	  </nav>
 	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Orgaos Fiscalizadores</h2> </div>
-	<table th:if="${orgaosfiscalizadores}" class="table table-striped table-dark">
+	<table id="tabelaFiscalizadores" class="table table-striped table-dark">
 		<thead>
 	      	<tr>
 		        <th scope="col">#</th>
 		        <th scope="col">Nome</th>
 		        <th scope="col">Descricao</th>
 		        <th scope="col"> 
-		        	<a href="/orgao-fiscalizador/create"><button type="button" class="btn btn-success">Cadastrar</button></a>
+		        	<a href="../admin/orgao-fiscalizador-form.html"><button type="button" class="btn btn-success">Cadastrar</button></a>
 		        </th>
 	      	</tr>
 	    </thead>
-		<tbody>
-	      	<tr th:each="fiscalizador : ${orgaosfiscalizadores}" >
-		        <td th:text="${fiscalizador.idOrgaoFiscalizador}"></td>
-		        <td th:text="${fiscalizador.nomeOrgaoFiscalizador}"></td>
-		        <td th:text="${fiscalizador.descricaoOrgaoFiscalizador}"></td>
-		        <td>
-	           		<a th:href="@{/orgao-fiscalizador/update/{idOrgaoFiscalizador}(idOrgaoFiscalizador=${donatario.idOrgaoFiscalizador})}"><button type="button" class="btn btn-warning">Editar</button></a>
-	           		<a th:href="@{/orgao-fiscalizador/delete/{idOrgaoFiscalizador}(idOrgaoFiscalizador=${donatario.idOrgaoFiscalizador})}"><button type="button" class="btn btn-danger">Deletar</button></a>
-		    	</td>
-		    </tr>
-    	</tbody>
-
 	</table>
+	<script src="../../assets/JS/orgao-fiscalizador-get.js"></script>
 </body>
+</html>

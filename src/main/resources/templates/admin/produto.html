@@ -11,47 +11,38 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-	  <ul class="nav justify-content-center">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/index">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/produto">Produto</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-fiscalizador">Orgao Fiscalizador</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/orgao-donatario">Orgao Donatario</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/admin/lote">Lote</a>
-		  </li>
-		</ul>
-	</nav>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/produto.html">Produto</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-fiscalizador.html">Orgao Fiscalizador</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/orgao-donatario.html">Orgao Donatario</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="../admin/lote.html">Lote</a>
+			</li>
+		  </ul>
+	  </nav>
 	<div style="display: flex; align-items: center; justify-content: center;">  <h2>Produtos</h2> </div>
-	<table th:if="${produtos}" class="table table-striped table-dark">
+	<table id="tabelaProdutos" class="table table-striped table-dark">
 		<thead>
 	      	<tr>
 		        <th scope="col">#</th>
 		        <th scope="col">Nome</th>
 		        <th scope="col">Descricao</th>
+		        <th scope="col">Quantidade</th>
 		        <th scope="col"> 
-		        	<a href="/produto/create"><button type="button" class="btn btn-success">Cadastrar</button></a>
+		        	<a href="produto-form.html"><button type="button" class="btn btn-success">Cadastrar</button></a>
 		        </th>
 	      	</tr>
 	    </thead>
-		<tbody>
-	      	<tr th:each="produto : ${produtos}" >
-		        <td th:text="${produto.codigoProduto}"></td>
-		        <td th:text="${produto.nomeProduto}"></td>
-		        <td th:text="${produto.descricaoProduto}"></td>
-		        <td>
-	           		<a th:href="@{/produto/update/{codigoProduto}(codigoProduto=${produto.codigoProduto})}"><button type="button" class="btn btn-warning">Editar</button></a>
-	           		<a th:href="@{/produto/delete/{codigoProduto}(codigoProduto=${produto.codigoProduto})}"><button type="button" class="btn btn-danger">Deletar</button></a>
-		    	</td>
-		    </tr>
-    	</tbody>
-
 	</table>
+	<script src="../../assets/JS/produto-get.js"></script>
 </body>
+</html>

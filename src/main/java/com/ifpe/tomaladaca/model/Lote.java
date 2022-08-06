@@ -1,5 +1,7 @@
 package com.ifpe.tomaladaca.model;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,13 +15,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Lote {
+public class Lote implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3677373405821767695L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idLote;
 	@Column
 	private Date dataEntrega;
+	@Column
+	private LocalDateTime dataCadastro;
 	@Column(length = 255)
 	private String descricaoLote;
 	@ManyToOne
@@ -65,5 +73,20 @@ public class Lote {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-
+	public LocalDateTime getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(LocalDateTime dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	public void addProdutos(Produto produto) {
+		this.produtos.add(produto);
+	}
+	public void removeProdutos(Produto produto) {
+		this.produtos.remove(produto);
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }
