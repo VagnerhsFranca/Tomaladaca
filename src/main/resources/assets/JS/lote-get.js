@@ -66,9 +66,7 @@ function deletarLote(codigoProduto){
 	
 	var ms = moment(dataAtual, "DD/MM/YYYY HH:mm:ss").diff(moment(dataCadastro, "DD/MM/YYYY HH:mm:ss"))
 	console.log(ms)
-	var m = moment.utc(ms).format(" mm");
-	console.log(m)	
-	if(m <= 30){
+	if(ms <= 1800000){
 		fazGet("http://localhost:8080/admin/lote/delete/"+ codigoProduto);
 		window.alert("O lote foi excluido")
 		window.location.reload(true);
