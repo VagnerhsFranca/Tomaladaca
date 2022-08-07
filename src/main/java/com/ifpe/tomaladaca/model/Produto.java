@@ -17,7 +17,7 @@ public class Produto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1704068985149952845L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigoProduto;
 	@Column(length = 255)
 	private String nomeProduto;

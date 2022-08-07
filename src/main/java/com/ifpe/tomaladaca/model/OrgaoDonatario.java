@@ -16,7 +16,7 @@ public class OrgaoDonatario implements Serializable{
 	 */
 	private static final long serialVersionUID = -5839800513633277938L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idOrgaoDonatario;
 	@Column(length = 255)
 	private String nomeOrgaoDonatario;

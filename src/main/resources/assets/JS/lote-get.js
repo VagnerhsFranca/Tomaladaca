@@ -28,7 +28,7 @@ function criaLinhaLote(lote) {
    	console.log(produtos)
    	for (var i = 0; i < produtos.length; i++) {
        let listaProdutos = document.createElement("p");
-       listaProdutos.innerHTML = "<p>"+ produtos[i].nomeProduto + " " + produtos[i].quantidade + "x" + "</p>"       
+       listaProdutos.innerHTML = "<p>"+ produtos[i].nomeProduto + "</p>"       
        tdProdutos.appendChild(listaProdutos)
     }; 
     

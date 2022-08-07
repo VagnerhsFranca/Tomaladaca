@@ -13,7 +13,7 @@ public class OrgaoFiscalizador implements Serializable{
 
 	private static final long serialVersionUID = 3714177921414007209L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idOrgaoFiscalizador;
 	@Column(length = 255)
 	private String nomeOrgaoFiscalizador;

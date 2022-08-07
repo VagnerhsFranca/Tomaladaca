@@ -75,7 +75,7 @@ function preencheModal(idDonatario){
    		ulProduto = document.createElement("ul")
    		for (var i = 0; i < produtos.length; i++) {
 	       	let liProdutos = document.createElement("li");
-	       	liProdutos.innerHTML =  produtos[i].nomeProduto + " " + produtos[i].quantidade + "x"
+	       	liProdutos.innerHTML =  produtos[i].nomeProduto
 	       	ulProduto.appendChild(liProdutos)
     	};
         tdProdutos.appendChild(ulProduto);
