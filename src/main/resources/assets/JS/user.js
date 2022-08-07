@@ -55,6 +55,7 @@ function preencheModal(idDonatario){
 	tituloModal.innerHTML = donatario.nomeOrgaoDonatario
 	
     tabela = document.getElementById("conteudoModal");
+    tabela.innerHTML = ''
     lotesDonatario.forEach(element => {
         
         let linha = document.createElement("div")
@@ -72,7 +73,7 @@ function preencheModal(idDonatario){
         
         produtos = element.produtos
    		console.log(produtos)
-   		ulProduto = document.createElement("ul")
+   		let ulProduto = document.createElement("ul")
    		for (var i = 0; i < produtos.length; i++) {
 	       	let liProdutos = document.createElement("li");
 	       	liProdutos.innerHTML =  produtos[i].nomeProduto
