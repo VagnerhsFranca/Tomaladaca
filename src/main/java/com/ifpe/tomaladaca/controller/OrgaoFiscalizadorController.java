@@ -43,6 +43,15 @@ public class OrgaoFiscalizadorController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	@CrossOrigin("*")
+	@GetMapping ("orgao-fiscalizador-form/{idOrgaoFiscalizador}")
+	public ResponseEntity<?> updateFiscalizador(Model model, @PathVariable Integer idOrgaoFiscalizador ) {
+		
+		if(orgaoFiscalizadorService.findById(idOrgaoFiscalizador) != null) {
+			return ResponseEntity.ok(orgaoFiscalizadorService.findById(idOrgaoFiscalizador).get());
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 	
 	@CrossOrigin("*")
 	@PostMapping("orgao-fiscalizador-form")
